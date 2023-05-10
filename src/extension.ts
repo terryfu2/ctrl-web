@@ -19,7 +19,8 @@ export function activate(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(disposable);
 }  */
- 
+
+//maybe add dynamic button to info box, that sends to link??
 const vscode = require('vscode');
 const { exec } = require('child_process');
 
