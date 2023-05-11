@@ -3,6 +3,14 @@
   "displayName": "ctrl-web",
   "description": "Search selected text",
   "version": "0.0.1",
+  "author": {
+    "name": "Terry Fu",
+    "email": "terryfu33@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/terryfu33/ctrl-web"
+  },
   "engines": {
     "vscode": "^1.78.0"
   },

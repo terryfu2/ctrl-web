@@ -1,40 +1,24 @@
-/* import * as vscode from 'vscode';
-import * as querystring from 'querystring';
-
-export function activate(context: vscode.ExtensionContext) {
-    
-    let disposable = vscode.commands.registerCommand('extension.searchSelectedText', () => {
-        let editor = vscode.window.activeTextEditor;
-        if (!editor) {
-            return; // No open text editor
-        }
-        let selectedText = editor.document.getText(editor.selection);
-        if (!selectedText) {
-            return; // No selected text
-        }
-        let encodedText = querystring.escape(selectedText);
-        vscode.env.openExternal(vscode.Uri.parse(`https://www.google.com/search?q=${encodedText}`));
-        vscode.window.showInformationMessage(`Searching for "${selectedText}"`);
-    });
-
-    context.subscriptions.push(disposable);
-}  */
- 
-const vscode = require('vscode');
+import * as vscode from 'vscode';
+//const vscode = require('vscode');
 const { exec } = require('child_process');
+let myStatusBarItem: vscode.StatusBarItem;
 
-function activate(context: { subscriptions: any[]; }) {
-  let disposable = vscode.commands.registerCommand('extension.searchSelectedText', function () {
-    let selectedText;
+function activate({ subscriptions }: vscode.ExtensionContext) {
+
+  const myCommandId = 'extension.searchSelectedText';
+  
+  let disposable = vscode.commands.registerCommand(myCommandId, async function () {
+    /* let selectedText;
     const activeEditor = vscode.window.activeTextEditor;
+
     if (activeEditor) {
       selectedText = activeEditor.document.getText(activeEditor.selection);
-      vscode.window.showInformationMessage('Info Notification2');
+      //vscode.window.showInformationMessage('Info Notification2');
     } else {
       const activeTerminal = vscode.window.activeTerminal;
       if (activeTerminal) {
         //selectedText = activeTerminal.selection;
-        vscode.window.showInformationMessage('Info Notification');
+        //vscode.window.showInformationMessage('Info Notification');
       }
     }
     if (selectedText) {
@@ -42,8 +26,6 @@ function activate(context: { subscriptions: any[]; }) {
       const encodedText = encodeURIComponent(selectedText);
       const url = `https://www.google.com/search?q=${encodedText}`;
     
-      vscode.window.showInformationMessage(url);
-
       if (process.platform === "win32") {
         exec(`start "" "${url}"`);
       } else if (process.platform === "darwin") {
@@ -51,12 +33,28 @@ function activate(context: { subscriptions: any[]; }) {
       } else {
         exec(`xdg-open "${url}"`);
       }
+    } */
+    let selectedText = await vscode.env.clipboard.readText();
+    const encodedText = encodeURIComponent(selectedText);
+    const url = `https://www.google.com/search?q=${encodedText}`;
+    if (process.platform === "win32") {
+      exec(`start "" "${url}"`);
+    } else if (process.platform === "darwin") {
+      exec(`open "${url}"`);
+    } else {
+      exec(`xdg-open "${url}"`);
     }
-  });
+  }); 
+  
+  
+  myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 10000000);
+	myStatusBarItem.command = myCommandId;
+  subscriptions.push(myStatusBarItem);
+  subscriptions.push(disposable);
 
-  context.subscriptions.push(disposable);
-
-  const terminal = vscode.window.activeTerminal;
+  updateStatusBarItem();
+  
+  /* const terminal = vscode.window.activeTerminal;
   if (terminal) {
     context.subscriptions.push(terminal.onDidChangeSelection((e: { text: any; }) => {
       const selectedText = e.text;
@@ -67,12 +65,18 @@ function activate(context: { subscriptions: any[]; }) {
         vscode.window.showInformationMessage('Info Notification');
       }
     }));
-  }
+  } */
+}
+
+function updateStatusBarItem(): void {
+  myStatusBarItem.text = `Go Search Web`;
+	myStatusBarItem.show();
 }
 
 function deactivate() {}
 
 module.exports = {
   activate,
-  deactivate
+  deactivate,
+  updateStatusBarItem
 };
