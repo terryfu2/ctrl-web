@@ -69,7 +69,7 @@ function activate({ subscriptions }: vscode.ExtensionContext) {
 }
 
 function updateStatusBarItem(): void {
-  myStatusBarItem.text = `Go Search Web`;
+  myStatusBarItem.text = `ctrl-web`;
 	myStatusBarItem.show();
 }
 
