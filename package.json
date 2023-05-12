@@ -3,6 +3,8 @@
   "displayName": "ctrl-web",
   "description": "Search selected text",
   "version": "0.0.1",
+  "publisher": "terryfu",
+  "icon": "res/logo.png",
   "author": {
     "name": "Terry Fu",
     "email": "terryfu33@gmail.com"
