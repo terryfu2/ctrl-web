@@ -8,7 +8,7 @@ function activate({ subscriptions }: vscode.ExtensionContext) {
   const myCommandId = 'extension.searchSelectedText';
   
   let disposable = vscode.commands.registerCommand(myCommandId, async function () {
-    /* let selectedText;
+    let selectedText;
     const activeEditor = vscode.window.activeTextEditor;
 
     if (activeEditor) {
@@ -33,8 +33,8 @@ function activate({ subscriptions }: vscode.ExtensionContext) {
       } else {
         exec(`xdg-open "${url}"`);
       }
-    } */
-    let selectedText = await vscode.env.clipboard.readText();
+    }
+    /* let selectedText = await vscode.env.clipboard.readText();
     const encodedText = encodeURIComponent(selectedText);
     const url = `https://www.google.com/search?q=${encodedText}`;
     if (process.platform === "win32") {
@@ -43,16 +43,16 @@ function activate({ subscriptions }: vscode.ExtensionContext) {
       exec(`open "${url}"`);
     } else {
       exec(`xdg-open "${url}"`);
-    }
+    } */
   }); 
   
   
-  myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 10000000);
+/*   myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 10000000);
 	myStatusBarItem.command = myCommandId;
-  subscriptions.push(myStatusBarItem);
+  subscriptions.push(myStatusBarItem);*/
   subscriptions.push(disposable);
 
-  updateStatusBarItem();
+  //updateStatusBarItem(); 
   
   /* const terminal = vscode.window.activeTerminal;
   if (terminal) {
@@ -68,15 +68,15 @@ function activate({ subscriptions }: vscode.ExtensionContext) {
   } */
 }
 
-function updateStatusBarItem(): void {
+/* function updateStatusBarItem(): void {
   myStatusBarItem.text = `ctrl-web`;
 	myStatusBarItem.show();
 }
-
+ */
 function deactivate() {}
 
 module.exports = {
   activate,
-  deactivate,
-  updateStatusBarItem
+  deactivate
+  //updateStatusBarItem
 };
