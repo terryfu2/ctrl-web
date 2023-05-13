@@ -1,10 +1,10 @@
 {
   "name": "ctrl-web",
   "displayName": "ctrl-web",
-  "description": "Search selected text",
-  "version": "0.0.1",
+  "description": "Keybind that opens selected text in google search with default browser",
+  "version": "1.1.0",
   "publisher": "terryfu",
-  "icon": "res/logo.png",
+  "icon": "res/icon.png",
   "author": {
     "name": "Terry Fu",
     "email": "terryfu33@gmail.com"
@@ -19,25 +19,43 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+		"onCommand:google-search.makeSearch",
+		"onCommand:google-search.makeSearchFromTerminal"
+	],
   "main": "./dist/extension.js",
   "readme": "README.md",
   "contributes": {
-    "commands": [
-      {
-        "command": "extension.searchSelectedText",
-        "title": "Search selected text",
-        "category": "Search"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "extension.searchSelectedText",
-        "key": "ctrl+shift+c",
-        "when": "editorTextFocus"
-      }
-    ]
-  },
+		"commands": [
+			{
+				"command": "google-search.makeSearch",
+				"title": "Google selected text"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "google-search.makeSearch",
+				"key": "ctrl+alt+c",
+				"mac": "cmd+alt+c",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "google-search.makeSearchFromTerminal",
+				"key": "ctrl+shift+c",
+				"mac": "cmd+shift+c",
+				"when": "terminalFocus"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "google-search.makeSearch",
+					"when": "editorHasSelection",
+					"group": "navigation"
+				}
+			]
+		}
+	},
   "scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "webpack",
@@ -50,20 +68,17 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/glob": "^8.1.0",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "16.x",
-    "@types/vscode": "^1.78.0",
-    "@typescript-eslint/eslint-plugin": "^5.59.1",
-    "@typescript-eslint/parser": "^5.59.1",
-    "@vscode/test-electron": "^2.3.0",
-    "eslint": "^8.39.0",
-    "glob": "^8.1.0",
-    "mocha": "^10.2.0",
-    "ts-loader": "^9.4.2",
-    "typescript": "^5.0.4",
-    "webpack": "^5.81.0",
-    "webpack-cli": "^5.0.2"
+    "@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "^16.4.10",
+		"@types/vscode": "^1.58.1",
+		"@typescript-eslint/eslint-plugin": "^4.28.5",
+		"@typescript-eslint/parser": "^4.28.5",
+		"eslint": "^7.32.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.0.3",
+		"typescript": "^4.3.5",
+		"vscode-test": "^1.6.1"
   },
   "dependencies": {
     "clipboardy": "^3.0.0"
