@@ -2,7 +2,7 @@
 <p align="center">
  
 
-https://github.com/terryfu2/ctrl-web/assets/40301450/d8f9ee54-7001-4e6b-bd11-dd7db7158ebb
+<!--https://github.com/terryfu2/ctrl-web/assets/40301450/d8f9ee54-7001-4e6b-bd11-dd7db7158ebb-->
 
 
 </p>
@@ -12,6 +12,7 @@ https://github.com/terryfu2/ctrl-web/assets/40301450/d8f9ee54-7001-4e6b-bd11-dd7
 
 * Select Text in Terminal, 'Ctrl-Shift-c' to open google search 
 * Select Text in Code Editor, 'Ctrl-Alt-c' to open google search 
+* 'Ctrl-Shift-s' to open google search directly in Vscode
 
 ## Features
 
