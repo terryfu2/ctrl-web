@@ -2,7 +2,7 @@
   "name": "ctrl-web",
   "displayName": "ctrl-web",
   "description": "Keybind that opens selected text in google search with default browser",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "publisher": "terryfu",
   "icon": "res/icon.png",
   "author": {
@@ -56,8 +56,8 @@
 			{
 				"command": "searchGoogle.searchGoogle",
 				"title": "Search Google",
-				"key": "ctrl+shift+s",
-				"mac": "cmd+shift+s" 
+				"key": "ctrl+alt+s",
+				"mac": "cmd+alt+s" 
 			}
 		],
 		"menus": {
