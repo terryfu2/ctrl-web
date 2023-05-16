@@ -18,6 +18,7 @@
     <img alt="Installs" src="https://img.shields.io/visual-studio-marketplace/i/terryfu.ctrl-web" />
   </a>
 </p>
+
 ## Usage
 
 * Select Text in Terminal, 'Ctrl-Shift-c' to open google search 
