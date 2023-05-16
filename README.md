@@ -7,7 +7,17 @@
 
 </p>
 <!-- markdownlint-enable -->
-
+<p align="center">
+  <a href="https://marketplace.visualstudio.com/items?itemName=terryfu.ctrl-web">
+    <img alt="Version" src="https://img.shields.io/visual-studio-marketplace/v/terryfu.ctrl-web?color=brightgreen" />
+  </a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=terryfu.ctrl-web">
+    <img alt="Downloads" src="https://img.shields.io/visual-studio-marketplace/d/terryfu.ctrl-web" />
+  </a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=terryfu.ctrl-web">
+    <img alt="Installs" src="https://img.shields.io/visual-studio-marketplace/i/terryfu.ctrl-web" />
+  </a>
+</p>
 ## Usage
 
 * Select Text in Terminal, 'Ctrl-Shift-c' to open google search 
