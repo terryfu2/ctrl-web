@@ -1,4 +1,11 @@
 <!-- markdownlint-disable -->
+<h1 align="center">
+  Ctrl-Web Extension for VS Code
+</h1>
+ 
+<p align="center">
+  Simplifying the ctrl-c google search workflow in VsCode
+</p>
 <p align="center">
  
 
